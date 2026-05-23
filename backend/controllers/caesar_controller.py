@@ -96,7 +96,7 @@ async def visualize_caesar(text: str, shift: int):
             original_text=text,
             result_text=result["ciphered_text"],
             shift=shift,
-            visualization_step=result["visualization"],
+            visualization_steps=result["visualization"],
         )
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))

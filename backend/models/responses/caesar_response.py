@@ -38,4 +38,4 @@ class CaesarVisualizationResponse(BaseModel):
     original_text: str
     result_text: str
     shift: int
-    visualization_step: List[Dict[str, Any]]
+    visualization_steps: List[Dict[str, Any]]

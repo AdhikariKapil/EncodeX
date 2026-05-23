@@ -1,5 +1,13 @@
 .aider*
+
+# Backend
 backend/.venv
 backend/__pycache__/*
 backend/*/__pycache__/*
+backend/*/*/__pycache__/*
 backend/.envrc
+*.pyc
+
+
+#Frontend
+frontend/.env
