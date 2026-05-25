@@ -11,3 +11,7 @@ backend/.envrc
 
 #Frontend
 frontend/.env
+
+
+# Specific files
+/home/beyonder/dev/projects/EncodeX/backend/models/responses/__pycache__/caesar_response.cpython-312.pyc
