@@ -1,12 +1,11 @@
-.aider*
-
 # Backend
 backend/.venv
 backend/__pycache__/*
 backend/*/__pycache__/*
 backend/*/*/__pycache__/*
 backend/.envrc
-*.pyc
+backend/.direnv/
+backend/*.pyc
 
 
 #Frontend
@@ -15,3 +14,6 @@ frontend/.env
 
 # Specific files
 /home/beyonder/dev/projects/EncodeX/backend/models/responses/__pycache__/caesar_response.cpython-312.pyc
+
+# Gemini
+gemini-session.txt
