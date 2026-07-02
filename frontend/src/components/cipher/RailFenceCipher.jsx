@@ -42,7 +42,7 @@ const RailVisualization = ({ visualRails }) => {
   );
 };
 
-const RailFenceCiper = () => {
+const RailFenceCipher = () => {
   const [inputText, setInputText] = useState("");
   const [rails, setRails] = useState(3);
   const [outputText, setOutputText] = useState("");
@@ -289,4 +289,4 @@ const RailFenceCiper = () => {
   );
 };
 
-export default RailFenceCiper;
+export default RailFenceCipher;

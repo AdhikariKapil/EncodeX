@@ -48,3 +48,13 @@ export const rsaApi = {
   visualize: (plaintext, publicKey) =>
     api.post("/rsa/visualize", { plaintext, public_key: publicKey }),
 };
+
+export const authApi = {
+  register: (username, password, algorithm) =>
+    api.post("/auth/register", { username, password, algorithm }),
+
+  login: (username, password) =>
+    api.post("/auth/login", { username, password }),
+
+  getUsers: () => api.get("/auth/users"),
+};

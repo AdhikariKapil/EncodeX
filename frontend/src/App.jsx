@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import CaesarCipher from "./components/cipher/CaesarCipher";
-import RailFenceCiper from "./components/cipher/RailFenceCipher";
+import RailFenceCipher from "./components/cipher/RailFenceCipher";
 import RSACipher from "./components/cipher/RSACipher";
+import Login from "./components/auth/Login";
 
 function App() {
   const [activeCipher, setActiveCipher] = useState("caesar");
@@ -29,8 +30,8 @@ function App() {
                 v1.0
               </span>
             </div>
-            <nav className="flex gap-4">
-              {["caesar", "railfence", "rsa"].map((cipher) => (
+            <nav className="flex gap-2 flex-wrap">
+              {["caesar", "railfence", "rsa", "auth"].map((cipher) => (
                 <button
                   key={cipher}
                   onClick={() => setActiveCipher(cipher)}
@@ -40,7 +41,9 @@ function App() {
                         ? "bg-blue-600 text-white"
                         : cipher === "railfence"
                           ? "bg-green-600 text-white"
-                          : "bg-purple-600 text-white"
+                          : cipher === "rsa"
+                            ? "bg-purple-600 text-white"
+                            : "bg-yellow-600 text-white"
                       : "text-gray-400 hover:text-gray-300"
                   }`}
                 >
@@ -48,7 +51,9 @@ function App() {
                     ? "Caesar"
                     : cipher === "railfence"
                       ? "Rail Fence"
-                      : "RSA"}
+                      : cipher === "rsa"
+                        ? "RSA"
+                        : "Login"}
                 </button>
               ))}
             </nav>
@@ -58,8 +63,9 @@ function App() {
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {activeCipher === "caesar" && <CaesarCipher />}
-        {activeCipher === "railfence" && <RailFenceCiper />}
+        {activeCipher === "railfence" && <RailFenceCipher />}
         {activeCipher === "rsa" && <RSACipher />}
+        {activeCipher === "auth" && <Login />}
       </main>
 
       <footer className="border-t border-gray-800 mt-12">

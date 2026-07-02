@@ -1,15 +1,27 @@
+from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import caesar_route, rail_fence_route, rsa_route
+from database import init_db
+from routers import auth_route, caesar_route, rail_fence_route, rsa_route
+
+
+@asynccontextmanager
+async def lifespan(_app: FastAPI):
+    # Startup
+    init_db()
+    yield
+
 
 app = FastAPI(
     title="EncodeX API",
-    description="Collection of ciphering techniques.",
+    description="Educational ciphering techniques platform",
     version="1.0.0",
+    lifespan=lifespan,
 )
 
-# Configure CORS
+# CORS
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
@@ -18,10 +30,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Include Router
+# Include routers
 app.include_router(caesar_route.router)
 app.include_router(rail_fence_route.router)
 app.include_router(rsa_route.router)
+app.include_router(auth_route.router)
 
 
 @app.get("/")
@@ -29,7 +42,7 @@ async def root():
     return {
         "message": "Welcome to EncodeX API",
         "status": "online",
-        "available_cipher": ["Caesar Cipher", "Rail Fence Cipher", "RSA Encryption"],
+        "available_ciphers": ["caesar", "rail_fence", "rsa"],
     }
 
 
