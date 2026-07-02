@@ -87,27 +87,27 @@ const RailFenceCipher = () => {
     }
   };
 
-  const handleVisualize = async () => {
-    if (!inputText.trim()) {
-      toast.error("Please enter some text to visualize");
-      return;
-    }
-    setLoading(true);
-    try {
-      const response = await railFenceApi.visualize(
-        inputText,
-        rails,
-        activeTab,
-      );
-      setOutputText(response.data.result_text);
-      setVisualRails(response.data.visual_rails || []);
-      toast.success("Visualization generated!");
-    } catch (error) {
-      toast.error(error.response?.data?.detail || "Visualization failed");
-    } finally {
-      setLoading(false);
-    }
-  };
+  // const handleVisualize = async () => {
+  //   if (!inputText.trim()) {
+  //     toast.error("Please enter some text to visualize");
+  //     return;
+  //   }
+  //   setLoading(true);
+  //   try {
+  //     const response = await railFenceApi.visualize(
+  //       inputText,
+  //       rails,
+  //       activeTab,
+  //     );
+  //     setOutputText(response.data.result_text);
+  //     setVisualRails(response.data.visual_rails || []);
+  //     toast.success("Visualization generated!");
+  //   } catch (error) {
+  //     toast.error(error.response?.data?.detail || "Visualization failed");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   const copyToClipboard = () => {
     if (outputText) {
@@ -257,7 +257,7 @@ const RailFenceCipher = () => {
           </div>
 
           {/* ✅ Use the extracted component */}
-          <RailVisualization visualRails={visualRails} />
+          {/* <RailVisualization visualRails={visualRails} /> */}
         </div>
       </div>
 
