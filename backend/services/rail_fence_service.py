@@ -157,26 +157,27 @@ def rail_fence_decrypt(ciphertext: str, rails: int) -> dict:
         "visual_rails": visual_rails,
     }
 
-    def rail_fence_visualize(text: str, rails: int, operation: str = "encrypt") -> dict:
-        """
-        Generate detailed visualization of rail fence process.
-        """
-        if operation == "encrypt":
-            result = rail_fence_encrypt(text, rails)
-            return {
-                "operation": "encrypt",
-                "original_text": text,
-                "result_text": result["encrypted_text"],
-                "rails": rails,
-                "visual_rails": result["visual_rails"],
-                "positions": result["positions"],
-            }
-        else:
-            result = rail_fence_decrypt(text, rails)
-            return {
-                "operation": "decrypt",
-                "original_text": text,
-                "result_text": result["decrypted_text"],
-                "rails": rails,
-                "visual_rails": result["visual_rails"],
-            }
+
+def rail_fence_visualize(text: str, rails: int, operation: str = "encrypt") -> dict:
+    """
+    Generate detailed visualization of rail fence process.
+    """
+    if operation == "encrypt":
+        result = rail_fence_encrypt(text, rails)
+        return {
+            "operation": "encrypt",
+            "original_text": text,
+            "result_text": result["encrypted_text"],
+            "rails": rails,
+            "visual_rails": result["visual_rails"],
+            "positions": result["positions"],
+        }
+    else:
+        result = rail_fence_decrypt(text, rails)
+        return {
+            "operation": "decrypt",
+            "original_text": text,
+            "result_text": result["decrypted_text"],
+            "rails": rails,
+            "visual_rails": result["visual_rails"],
+        }

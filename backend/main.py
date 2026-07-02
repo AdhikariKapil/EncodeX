@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import caesar_route
+
+from routers import caesar_route, rail_fence_route, rsa_route
 
 app = FastAPI(
     title="EncodeX API",
@@ -19,6 +20,8 @@ app.add_middleware(
 
 # Include Router
 app.include_router(caesar_route.router)
+app.include_router(rail_fence_route.router)
+app.include_router(rsa_route.router)
 
 
 @app.get("/")
@@ -26,7 +29,7 @@ async def root():
     return {
         "message": "Welcome to EncodeX API",
         "status": "online",
-        "available_cipher": [],
+        "available_cipher": ["Caesar Cipher", "Rail Fence Cipher", "RSA Encryption"],
     }
 
 

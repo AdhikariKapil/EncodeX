@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { Toaster } from "react-hot-toast";
 import CaesarCipher from "./components/cipher/CaesarCipher";
+import RailFenceCiper from "./components/cipher/RailFenceCipher";
+import RSACipher from "./components/cipher/RSACipher";
 
 function App() {
+  const [activeCipher, setActiveCipher] = useState("caesar");
+
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <Toaster
@@ -15,7 +20,6 @@ function App() {
         }}
       />
 
-      {/* Header */}
       <header className="bg-gray-800 border-b border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center justify-between">
@@ -26,26 +30,38 @@ function App() {
               </span>
             </div>
             <nav className="flex gap-4">
-              <a
-                href="#"
-                className="text-gray-300 hover:text-blue-400 transition-colors"
-              >
-                Caesar
-              </a>
-              <a href="#" className="text-gray-500">
-                More coming soon...
-              </a>
+              {["caesar", "railfence", "rsa"].map((cipher) => (
+                <button
+                  key={cipher}
+                  onClick={() => setActiveCipher(cipher)}
+                  className={`px-3 py-1 rounded transition-colors ${
+                    activeCipher === cipher
+                      ? cipher === "caesar"
+                        ? "bg-blue-600 text-white"
+                        : cipher === "railfence"
+                          ? "bg-green-600 text-white"
+                          : "bg-purple-600 text-white"
+                      : "text-gray-400 hover:text-gray-300"
+                  }`}
+                >
+                  {cipher === "caesar"
+                    ? "Caesar"
+                    : cipher === "railfence"
+                      ? "Rail Fence"
+                      : "RSA"}
+                </button>
+              ))}
             </nav>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <CaesarCipher />
+        {activeCipher === "caesar" && <CaesarCipher />}
+        {activeCipher === "railfence" && <RailFenceCiper />}
+        {activeCipher === "rsa" && <RSACipher />}
       </main>
 
-      {/* Footer */}
       <footer className="border-t border-gray-800 mt-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-center text-gray-500 text-sm">
           EncodeX - Learning cryptography through visualization

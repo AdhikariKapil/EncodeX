@@ -26,4 +26,25 @@ export const caesarApi = {
     }),
 };
 
-export default api;
+export const railFenceApi = {
+  encrypt: (text, rails) => api.post("/rail-fence/encrypt", { text, rails }),
+
+  decrypt: (text, rails) => api.post("/rail-fence/decrypt", { text, rails }),
+
+  visualize: (text, rails, operation) =>
+    api.get("/rail-fence/visualize", { params: { text, rails, operation } }),
+};
+
+export const rsaApi = {
+  generateKeys: (keySize = 2048) =>
+    api.post("/rsa/generate-keys", { key_size: keySize }),
+
+  encrypt: (plaintext, publicKey) =>
+    api.post("/rsa/encrypt", { plaintext, public_key: publicKey }),
+
+  decrypt: (ciphertext, privateKey) =>
+    api.post("/rsa/decrypt", { ciphertext, private_key: privateKey }),
+
+  visualize: (plaintext, publicKey) =>
+    api.post("/rsa/visualize", { plaintext, public_key: publicKey }),
+};
