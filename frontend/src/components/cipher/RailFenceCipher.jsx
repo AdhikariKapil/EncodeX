@@ -3,44 +3,44 @@ import toast from "react-hot-toast";
 import { Lock, Unlock, Eye, Copy, Check } from "lucide-react";
 import { railFenceApi } from "../../services/api"; // ✅ Fixed import name
 
-const RailVisualization = ({ visualRails }) => {
-  if (!visualRails || visualRails.length === 0) return null;
-
-  return (
-    <div className="mt-4">
-      <h4 className="text-sm font-medium text-gray-300 mb-3">
-        Rail Grid Visualization:
-      </h4>
-      <div className="space-y-2">
-        {visualRails.map((rail) => (
-          <div key={rail.rail_number} className="flex items-center gap-2">
-            <div className="w-12 text-xs text-blue-400 font-mono">
-              Rail {rail.rail_number}:
-            </div>
-            <div className="flex-1 flex gap-1 overflow-x-auto">
-              {rail.content.map((cell, idx) => (
-                <div
-                  key={idx}
-                  className={`w-8 h-8 flex items-center justify-center rounded font-mono text-sm ${
-                    cell.char !== "."
-                      ? "bg-blue-600 text-white"
-                      : "bg-gray-800 text-gray-600"
-                  }`}
-                >
-                  {cell.char}
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className="mt-2 text-xs text-gray-500">
-        💡 Each column represents a character position. Dots (.) show empty
-        spaces in the rail pattern.
-      </div>
-    </div>
-  );
-};
+// const RailVisualization = ({ visualRails }) => {
+//   if (!visualRails || visualRails.length === 0) return null;
+//
+//   return (
+//     <div className="mt-4">
+//       <h4 className="text-sm font-medium text-gray-300 mb-3">
+//         Rail Grid Visualization:
+//       </h4>
+//       <div className="space-y-2">
+//         {visualRails.map((rail) => (
+//           <div key={rail.rail_number} className="flex items-center gap-2">
+//             <div className="w-12 text-xs text-blue-400 font-mono">
+//               Rail {rail.rail_number}:
+//             </div>
+//             <div className="flex-1 flex gap-1 overflow-x-auto">
+//               {rail.content.map((cell, idx) => (
+//                 <div
+//                   key={idx}
+//                   className={`w-8 h-8 flex items-center justify-center rounded font-mono text-sm ${
+//                     cell.char !== "."
+//                       ? "bg-blue-600 text-white"
+//                       : "bg-gray-800 text-gray-600"
+//                   }`}
+//                 >
+//                   {cell.char}
+//                 </div>
+//               ))}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//       <div className="mt-2 text-xs text-gray-500">
+//         💡 Each column represents a character position. Dots (.) show empty
+//         spaces in the rail pattern.
+//       </div>
+//     </div>
+//   );
+// };
 
 const RailFenceCipher = () => {
   const [inputText, setInputText] = useState("");
@@ -210,14 +210,14 @@ const RailFenceCipher = () => {
                   ? "Encrypt"
                   : "Decrypt"}
             </button>
-            <button
-              onClick={handleVisualize}
-              disabled={loading}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50"
-            >
-              <Eye className="w-4 h-4" />
-              Visualize
-            </button>
+            {/* <button */}
+            {/*   onClick={handleVisualize} */}
+            {/*   disabled={loading} */}
+            {/*   className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors disabled:opacity-50" */}
+            {/* > */}
+            {/*   <Eye className="w-4 h-4" /> */}
+            {/*   Visualize */}
+            {/* </button> */}
             <button
               onClick={clearAll}
               className="px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors"
