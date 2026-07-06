@@ -1,7 +1,8 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 
 from database import init_db
 from routers import auth_route, caesar_route, rail_fence_route, rsa_route
@@ -46,6 +47,8 @@ async def root():
     }
 
 
-@app.get("/health")
-async def health_check():
+@app.api_route("/health", methods=["GET", "HEAD"])
+async def check_health(request: Request):
+    if request.method == "HEAD":
+        return Response(status_code=200)
     return {"status": "healthy"}
